@@ -363,7 +363,37 @@ For example:
   WHERE (`id` LIKE ? OR `id` LIKE "bar%")
   [qw/%foo/]
 
-=head2 where hash no like
+  # with escape
+  WHERE %w
+  { id => { LIKE => { '@' => '@_foo%' } } }
+  WHERE (`id` LIKE ? ESCAPE ?)
+  [qw/@_foo% @/]
+
+  # scalar ref with escape
+  WHERE %w
+  { id => { LIKE => { '@' => \'"@_foo%"' } } }
+  WHERE (`id` LIKE "@_foo%" ESCAPE ?)
+  [qw/@/]
+
+  # array with escape
+  WHERE %w
+  { id => { LIKE => { '@' => [\'"@_foo%"', '@_bar%'] } } }
+  WHERE (`id` LIKE "@_foo%" ESCAPE ? OR `id` LIKE ? ESCAPE ?)
+  [qw/@ @_bar% @/]
+
+  # -like_binaray
+  WHERE %w
+  { id => { -LIKE_BINARY => '%foo' } }
+  WHERE (`id` LIKE BINARY ?)
+  [qw/%foo/]
+
+  # like binaray
+  WHERE %w
+  { id => { 'LIKE BINARY' => '%foo' } }
+  WHERE (`id` LIKE BINARY ?)
+  [qw/%foo/]
+
+=head2 where hash not like
 
   # scalar
   WHERE %w
@@ -387,6 +417,18 @@ For example:
   WHERE %w
   { id => { 'NOT LIKE' => ['%foo', \'"bar%"'] } }
   WHERE (`id` NOT LIKE ? OR `id` NOT LIKE "bar%")
+  [qw/%foo/]
+
+  # -not_like_binaray
+  WHERE %w
+  { id => { -NOT_LIKE_BINARY => '%foo' } }
+  WHERE (`id` NOT LIKE BINARY ?)
+  [qw/%foo/]
+
+  # like binaray
+  WHERE %w
+  { id => { 'NOT LIKE BINARY' => '%foo' } }
+  WHERE (`id` NOT LIKE BINARY ?)
   [qw/%foo/]
 
 =head2 where hash between
