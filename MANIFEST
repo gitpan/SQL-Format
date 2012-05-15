@@ -28,6 +28,9 @@ t/50_update.t
 t/59_update_exception.t
 t/60_delete.t
 t/69_exception.t
+t/70_insert_multi.t
+t/71_insert_multi_from_hash.t
+t/79_insert_multi_exception.t
 t/90_quote.t
 t/99_exception.t
 t/Util.pm
