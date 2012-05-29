@@ -3,7 +3,7 @@ package SQL::Format;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Exporter 'import';
 use Carp qw(croak carp);
@@ -175,6 +175,14 @@ sub _table {
 
 sub _where {
     my ($self, $val, $bind) = @_;
+
+    if (ref $val eq 'ARRAY') {
+        my @ret;
+        for my $v (@$val) {
+            push @ret, $self->_where($v, $bind);
+        }
+        return @ret == 1 ? $ret[0] : join ' OR ', map { "($_)" } @ret;
+    }
 
     return unless ref $val eq 'HASH';
     my $ret = join ' AND ', map {
@@ -675,7 +683,7 @@ sub select {
         $format .= ' %j';
         push @args, $join;
     }
-    if (keys %{ $where || {} }) {
+    if (ref $where) {
         $format .= ' WHERE %w';
         push @args, $where;
     }
