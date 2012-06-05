@@ -3,7 +3,7 @@ package SQL::Format;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Exporter 'import';
 use Carp qw(croak carp);
@@ -878,7 +878,7 @@ __END__
 
 =head1 NAME
 
-SQL::Format - Yet yet another SQL builder
+SQL::Format - Yet another yet another SQL builder
 
 =head1 SYNOPSIS
 

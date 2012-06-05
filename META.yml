@@ -1,5 +1,5 @@
 ---
-abstract: 'Yet yet another SQL builder'
+abstract: 'Yet another yet another SQL builder'
 author:
   - 'xaicron <xaicron {at} cpan.org>'
 build_requires:
@@ -26,4 +26,4 @@ resources:
   bugtracker: http://github.com/xaicron/p5-SQL-Format/issues
   license: http://dev.perl.org/licenses/
   repository: http://github.com/xaicron/p5-SQL-Format/
-version: 0.06
+version: 0.07
