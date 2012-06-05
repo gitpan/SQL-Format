@@ -3,7 +3,7 @@ package SQL::Format;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Exporter 'import';
 use Carp qw(croak carp);
@@ -686,7 +686,7 @@ sub select {
         $format .= ' %j';
         push @args, $join;
     }
-    if (ref $where) {
+    if ($where && (ref $where eq 'HASH' && keys %$where) || (ref $where eq 'ARRAY' && @$where)) {
         $format .= ' WHERE %w';
         push @args, $where;
     }
@@ -760,7 +760,7 @@ sub update {
     my $format = "$prefix $quoted_table SET ".$set_clause;
 
     my @args;
-    if (keys %{ $where || {} }) {
+    if ($where && (ref $where eq 'HASH' && keys %$where) || (ref $where eq 'ARRAY' && @$where)) {
         $format .= ' WHERE %w';
         push @args, $where;
     }
@@ -789,7 +789,7 @@ sub delete {
     my $format       = "$prefix FROM $quoted_table";
 
     my @args;
-    if (keys %{ $where || {} }) {
+    if ($where && (ref $where eq 'HASH' && keys %$where) || (ref $where eq 'ARRAY' && @$where)) {
         $format .= ' WHERE %w';
         push @args, $where;
     }
