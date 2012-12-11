@@ -1,5 +1,6 @@
 .proverc
 bench/select.pl
+Build.PL
 Changes
 inc/Module/Install.pm
 inc/Module/Install/AuthorTests.pm
@@ -12,10 +13,11 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/SQL/Format.pm
 lib/SQL/Format/Spec.pod
-Makefile.PL
+LICENSE
 MANIFEST			This list of files
+META.json
 META.yml
-README.pod
+README
 t/00_compile.t
 t/10_spec.t
 t/20_new.t
@@ -31,6 +33,7 @@ t/69_exception.t
 t/70_insert_multi.t
 t/71_insert_multi_from_hash.t
 t/79_insert_multi_exception.t
+t/80_insert_on_duplicate.t
 t/90_quote.t
 t/99_exception.t
 t/Util.pm
@@ -40,3 +43,4 @@ xt/03_pod-coverage.t
 xt/04_perlcritic.t
 xt/05_script-shebang.t
 xt/perlcriticrc
+Makefile.PL
