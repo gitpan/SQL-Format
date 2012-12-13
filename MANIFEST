@@ -43,4 +43,3 @@ xt/03_pod-coverage.t
 xt/04_perlcritic.t
 xt/05_script-shebang.t
 xt/perlcriticrc
-Makefile.PL

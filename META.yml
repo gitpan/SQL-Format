@@ -4,6 +4,7 @@ author:
   - unknown
 build_requires:
   Test::More: 0.98
+  Tie::IxHash: 0
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 0
@@ -21,11 +22,11 @@ no_index:
 provides:
   SQL::Format:
     file: lib/SQL/Format.pm
-    version: 0.09
+    version: 0.10
 requires:
   perl: 5.008001
 resources:
   bugtracker: http://github.com/xaicron/p5-SQL-Format/issues
   license: http://dev.perl.org/licenses/
   repository: http://github.com/xaicron/p5-SQL-Format
-version: 0.09
+version: 0.10

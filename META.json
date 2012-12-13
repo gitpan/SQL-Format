@@ -23,7 +23,8 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::More" : "0.98",
+            "Tie::IxHash" : "0"
          }
       },
       "configure" : {
@@ -40,7 +41,7 @@
    "provides" : {
       "SQL::Format" : {
          "file" : "lib/SQL/Format.pm",
-         "version" : "0.09"
+         "version" : "0.10"
       }
    },
    "release_status" : "stable",
@@ -55,5 +56,5 @@
          "url" : "http://github.com/xaicron/p5-SQL-Format"
       }
    },
-   "version" : "0.09"
+   "version" : "0.10"
 }
