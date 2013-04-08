@@ -3,7 +3,7 @@ package SQL::Format;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 use Exporter 'import';
 use Carp qw(croak carp);
@@ -492,7 +492,10 @@ sub _join {
             $ret .= ' ON '.(join ' AND ', map {
                 my ($k, $v) = ($_, $cond->{$_});
                 my $ret;
-                if (ref $v eq 'HASH') {
+                if (uc $k eq '-WHERE') {
+                    $ret = $self->_where($v, $bind);
+                }
+                elsif (ref $v eq 'HASH') {
                     my $no_paren = keys %$v > 1 ? 0 : 1;
                     $ret = join ' AND ', map {
                         my $op = $_;
