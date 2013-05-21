@@ -4,7 +4,7 @@
       "xaicron <xaicron {at} cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.0.53",
+   "generated_by" : "Minilla/v0.4.3",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -23,12 +23,6 @@
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "Test::More" : "0.98",
-            "Tie::IxHash" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
             "CPAN::Meta" : "0",
@@ -38,23 +32,28 @@
       },
       "develop" : {
          "requires" : {
-            "Pod::Wordlist::hanekomu" : "0",
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.10108",
             "Test::Pod" : "1.41",
-            "Test::Spellunker" : "v0.0.3"
+            "Test::Spellunker" : "v0.2.2"
          }
       },
       "runtime" : {
          "requires" : {
             "perl" : "5.008001"
          }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.98",
+            "Tie::IxHash" : "0"
+         }
       }
    },
    "provides" : {
       "SQL::Format" : {
          "file" : "lib/SQL/Format.pm",
-         "version" : "0.13"
+         "version" : "0.14"
       }
    },
    "release_status" : "stable",
@@ -68,7 +67,7 @@
          "web" : "https://github.com/xaicron/p5-SQL-Format"
       }
    },
-   "version" : "0.13",
+   "version" : "0.14",
    "x_contributors" : [
       "Olivier MenguÃ© <dolmen@cpan.org>",
       "xaicron <xaicron@gmail.com>"
