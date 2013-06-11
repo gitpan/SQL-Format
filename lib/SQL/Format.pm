@@ -3,7 +3,7 @@ package SQL::Format;
 use strict;
 use warnings;
 use 5.008_001;
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 use Exporter 'import';
 use Carp qw(croak carp);
@@ -228,7 +228,6 @@ sub _where {
                     push @$bind, @_bind;
                 }
                 $k = join " $logic ", @statements;
-                $no_paren = 1;
             }
             elsif (@$v == 0) {
                 # []
@@ -439,11 +438,11 @@ sub _options {
         my $ret = _sort_expr($val->{order_by});
         push @exprs, 'ORDER BY '.$ret;
     }
-    if (defined(my $group_by = $val->{group_by})) {
-    }
     if (defined $val->{limit}) {
+        croak "limit must be numeric specified ($val->{limit})" if $val->{limit} =~ /\D/;
         my $ret = 'LIMIT ';
         if ($val->{offset}) { # defined and > 0
+            croak "offset must be numeric specified ($val->{offset})" if $val->{offset} =~ /\D/;
             my $limit_dialect = $LIMIT_DIALECT_MAP->{$LIMIT_DIALECT} || 0;
             if ($limit_dialect == _LIMIT_OFFSET) {
                 $ret .= "$val->{limit} OFFSET $val->{offset}";
